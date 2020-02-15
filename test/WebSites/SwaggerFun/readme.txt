@@ -2,6 +2,7 @@
 	foreach operation in path.operations
 		foreach parameter in operation.parameters // includes path, query etc.
 			parameter.generateSchema()
+			parameter.callParameterFilters()
 		
 		operation.requestBody.generateSchema()
 		

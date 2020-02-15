@@ -1,6 +1,6 @@
 using System;
 
-namespace SwaggerFun
+namespace SwaggerFun.Models
 {
     public class WeatherForecast
     {

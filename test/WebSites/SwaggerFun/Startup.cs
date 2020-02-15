@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace SwaggerFun
 {
@@ -22,7 +23,13 @@ namespace SwaggerFun
                 .AddSwaggerGen(options => 
                 {
                     options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Test API", Version = "V1.0.1" });
+
+                    options.UseFullTypeNameInSchemaIds();
+
                     options.SchemaFilter<SchemaFilter>();
+                    options.SchemaFilter<EnumSchemaFilter>();
+                    options.ParameterFilter<ParameterFilter>();
+                    options.ParameterFilter<EnumParameterFilter>();
                     options.OperationFilter<OperationFilter>();
 #pragma warning disable 0618
                     // TODO (2020-01-31): Figure out an alternative to this.
