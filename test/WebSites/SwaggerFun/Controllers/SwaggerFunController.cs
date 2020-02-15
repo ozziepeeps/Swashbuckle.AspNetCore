@@ -14,5 +14,11 @@ namespace SwaggerFun.Controllers
         {
             return new SwaggerFunModel();
         }
+
+        [HttpGet("swaggerfun/enum")]
+        public async Task<SwaggerFunEnum> GetSwaggerFunEnumAsync(CancellationToken cancellationToken)
+        {
+            return SwaggerFunEnum.One;
+        }
     }
 }
