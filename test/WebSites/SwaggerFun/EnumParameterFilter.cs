@@ -8,10 +8,9 @@ namespace SwaggerFun
     {
         public void Apply(OpenApiParameter parameter, ParameterFilterContext context)
         {
-            var type = context.ParameterInfo.ParameterType;
-            var uwrappedType = type.UnwrapIfNullable();
+            var type = context.ParameterInfo.ParameterType.UnwrapIfNullable();
 
-            if (!uwrappedType.IsEnum)
+            if (!type.IsEnum)
             {
                 return;
             }
@@ -19,7 +18,7 @@ namespace SwaggerFun
             // TODO (2020-02-14): Need this hack to work around a serialize issue with the V2 format.
             parameter.Extensions["schema"] = new OpenApiObject
             {
-                ["$ref"] = new OpenApiString("#/definitions/" + uwrappedType.FullName),
+                ["$ref"] = new OpenApiString("#/definitions/" + type.FullName),
             };
         }
     }
