@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SwaggerFun.Models;
@@ -9,16 +10,28 @@ namespace SwaggerFun.Controllers
     [Route("[controller]")]
     public class SwaggerFunController
     {
-        [HttpGet("{id}")]
+        [HttpGet("{id}/{type}")]
         public async Task<SwaggerFunModel> GetSwaggerFunAsync(int id, SwaggerFunEnum? type, int query, CancellationToken cancellationToken)
         {
             return new SwaggerFunModel();
         }
 
-        [HttpGet("swaggerfun/enum")]
+        [HttpGet("enum")]
         public async Task<SwaggerFunEnum> GetSwaggerFunEnumAsync(CancellationToken cancellationToken)
         {
             return SwaggerFunEnum.One;
+        }
+
+        [HttpGet("enum/array")]
+        public async Task<SwaggerFunEnum[]> GetSwaggerFunEnumArrayAsync(CancellationToken cancellationToken)
+        {
+            return Array.Empty<SwaggerFunEnum>();
+        }
+
+        [HttpGet("int/array")]
+        public async Task<int[]> GetSwaggerFunIntArrayAsync(CancellationToken cancellationToken)
+        {
+            return Array.Empty<int>();
         }
     }
 }

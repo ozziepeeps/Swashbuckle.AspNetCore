@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Interfaces;
 
@@ -136,6 +137,16 @@ namespace SwaggerFun
             return type;
         }
 
+        public static Type UnwrapIfTask(this Type type)
+        {
+            if (type.IsTask(out var taskTypeArgument))
+            {
+                return taskTypeArgument;
+            }
+
+            return type;
+        }
+
         public static bool IsNullable(this Type type, out Type nullableTypeArgument)
         {
             nullableTypeArgument = null;
@@ -143,6 +154,19 @@ namespace SwaggerFun
             if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
             {
                 nullableTypeArgument = type.GetGenericArguments().Single();
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool IsTask(this Type type, out Type taskTypeArgument)
+        {
+            taskTypeArgument = null;
+
+            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Task<>))
+            {
+                taskTypeArgument = type.GetGenericArguments().Single();
                 return true;
             }
 
