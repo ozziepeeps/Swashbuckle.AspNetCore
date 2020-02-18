@@ -12,7 +12,7 @@ namespace SwaggerFun
                 foreach (var content in response.Value.Content)
                 {
                     var returnType = context.MethodInfo.ReturnType.UnwrapIfTask();
-                    returnType.ApplyTypeModifierExtensions(content.Value);
+                    returnType.ApplyTypeModifierExtensions(content.Value.Schema);
                 }
             }
         }

@@ -33,5 +33,17 @@ namespace SwaggerFun.Controllers
         {
             return Array.Empty<int>();
         }
+
+        [HttpGet("nullablebool")]
+        public async Task<bool?> GetSwaggerFunNullableBoolAsync(CancellationToken cancellationToken)
+        {
+            return true;
+        }
+
+        [HttpGet("obsolete")]
+        [Obsolete("Use something else!")]
+        public async Task GetSwaggerFunObsoleteAsync(CancellationToken cancellationToken)
+        {
+        }
     }
 }
