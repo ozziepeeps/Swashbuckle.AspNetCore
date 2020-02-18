@@ -37,5 +37,30 @@ namespace SwaggerFun.Models
         /// Gets or sets the fourth map.
         /// </summary>
         public IDictionary<SwaggerFunEnum, Attachment> Map4 { get; set; }
+
+        /// <summary>
+        /// Gets or sets the fifth map.
+        /// </summary>
+        public IReadOnlyDictionary<SwaggerFunEnum, Attachment> Map5 { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sixth map.
+        /// </summary>
+        public IReadOnlyDictionary<string, SwaggerFunEnum2> Map6 { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type.
+        /// </summary>
+        public SwaggerFunEnum Enumeration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the nullable type.
+        /// </summary>
+        public SwaggerFunEnum? NullableEnumeration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type array.
+        /// </summary>
+        public SwaggerFunEnum[] EnumerationArray { get; set; }
     }
 }

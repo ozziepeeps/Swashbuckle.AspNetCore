@@ -174,6 +174,8 @@ namespace SwaggerFun
                         property.Value.Extensions["x-costar-propertyname"] = new OpenApiString(propertyInfo.Name);
                     }
 
+                    propertyInfo.PropertyType.ApplyPrimitiveExtensions(property.Value);
+
                     Transform(property.Value, propertyInfo.PropertyType);
                 }
 
