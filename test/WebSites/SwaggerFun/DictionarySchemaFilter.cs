@@ -27,6 +27,9 @@ namespace SwaggerFun
 
             keyType.ApplyPrimitiveExtensions(keySchema);
 
+            var valueType = dictionaryType.GetGenericArguments()[1];
+            valueType.ApplyPrimitiveExtensions(schema.AdditionalProperties);
+
             var dictionary = new OpenApiObject
             {
                 ["type"] = new OpenApiString(keySchema.Type),

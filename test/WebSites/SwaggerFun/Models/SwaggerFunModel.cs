@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SwaggerFun.Models
 {
@@ -13,5 +14,15 @@ namespace SwaggerFun.Models
         /// Gets or sets the duration.
         /// </summary>
         public TimeSpan Duration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the map.
+        /// </summary>
+        public IDictionary<uint?, string> Map { get; set; }
+
+        /// <summary>
+        /// Gets or sets the second map.
+        /// </summary>
+        public IDictionary<Guid, int?> Map2 { get; set; }
     }
 }

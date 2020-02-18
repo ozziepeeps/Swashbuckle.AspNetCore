@@ -12,6 +12,11 @@ namespace SwaggerFun
     {
         public static void ApplyPrimitiveExtensions(this Type type, IOpenApiExtensible extensible)
         {
+            if (type == null)
+            {
+                return;
+            }
+
             int? byteSize = null;
             var unsigned = false;
 
