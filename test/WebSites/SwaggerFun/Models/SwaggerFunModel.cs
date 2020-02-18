@@ -62,5 +62,31 @@ namespace SwaggerFun.Models
         /// Gets or sets the type array.
         /// </summary>
         public SwaggerFunEnum[] EnumerationArray { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type collection.
+        /// </summary>
+        public IEnumerable<SwaggerFunEnum> EnumerationEnumerable { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type collection.
+        /// </summary>
+        public IReadOnlyList<SwaggerFunEnum> EnumerationReadOnlyList { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type array.
+        /// </summary>
+        public string[] StringArray { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type collection.
+        /// </summary>
+        public IEnumerable<string> StringEnumerable { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets the type collection.
+        /// </summary>
+        public IReadOnlyList<string> StringReadOnlyList { get; set; }
     }
 }
