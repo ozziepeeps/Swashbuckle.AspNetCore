@@ -17,7 +17,7 @@ namespace SwaggerFun
             var underlyingType = context.Type.GetEnumUnderlyingType();
             var enumSchema = context.SchemaGenerator.GenerateSchema(underlyingType, context.SchemaRepository);
 
-            underlyingType.ApplyTypeModifierExtensions(enumSchema);
+            underlyingType.ApplyPrimitiveExtensions(enumSchema);
 
             var members = type.GetEnumMembers();
             schema.Description = members.Describe();

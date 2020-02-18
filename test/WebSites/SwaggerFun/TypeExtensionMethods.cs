@@ -10,7 +10,7 @@ namespace SwaggerFun
 {
     internal static class TypeExtensionMethods
     {
-        public static void ApplyTypeModifierExtensions(this Type type, IOpenApiExtensible extensible)
+        public static void ApplyPrimitiveExtensions(this Type type, IOpenApiExtensible extensible)
         {
             int? byteSize = null;
             var unsigned = false;
@@ -64,6 +64,7 @@ namespace SwaggerFun
                     break;
 
                 case "System.Decimal":
+                    // Not technically a primitive, but often used like it's one.
                     byteSize = 16;
                     break;
             }

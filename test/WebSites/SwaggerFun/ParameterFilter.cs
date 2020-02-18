@@ -8,7 +8,7 @@ namespace SwaggerFun
         public void Apply(OpenApiParameter parameter, ParameterFilterContext context)
         {
             var type = context.ParameterInfo.ParameterType;
-            type.ApplyTypeModifierExtensions(parameter);
+            type.ApplyPrimitiveExtensions(parameter);
         }
     }
 }

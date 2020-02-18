@@ -25,7 +25,7 @@ namespace SwaggerFun
             var keyType = dictionaryType.GetGenericArguments()[0];
             var keySchema = context.SchemaGenerator.GenerateSchema(keyType, context.SchemaRepository);
 
-            keyType.ApplyTypeModifierExtensions(keySchema);
+            keyType.ApplyPrimitiveExtensions(keySchema);
 
             var dictionary = new OpenApiObject
             {
