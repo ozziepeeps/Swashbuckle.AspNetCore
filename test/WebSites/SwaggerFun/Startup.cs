@@ -25,9 +25,9 @@ namespace SwaggerFun
 
                     options.UseFullTypeNameInSchemaIds();
 
-                    options.SchemaFilter<SchemaFilter>();
                     options.SchemaFilter<DictionarySchemaFilter>();
                     options.SchemaFilter<EnumSchemaFilter>();
+                    options.SchemaFilter<KnownTypeSchemaFilter>();
                     options.ParameterFilter<ParameterFilter>();
                     options.ParameterFilter<EnumParameterFilter>();
                     options.OperationFilter<OperationFilter>();
@@ -36,7 +36,7 @@ namespace SwaggerFun
                     // TODO (2020-01-31): Figure out an alternative to this.
                     options.DescribeAllEnumsAsStrings();
 #pragma warning restore 0618
-                    options.DocumentFilter<DocumentFilter>();
+                    options.DocumentFilter<RemoveKnownTypeDocumentFilter>();
                 })
                 .AddControllers();
         }
