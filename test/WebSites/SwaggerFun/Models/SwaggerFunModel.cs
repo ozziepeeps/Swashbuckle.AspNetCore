@@ -24,5 +24,10 @@ namespace SwaggerFun.Models
         /// Gets or sets the second map.
         /// </summary>
         public IDictionary<Guid, int?> Map2 { get; set; }
+
+        /// <summary>
+        /// Gets or sets the third map.
+        /// </summary>
+        public IDictionary<Guid, Attachment> Map3 { get; set; }
     }
 }
