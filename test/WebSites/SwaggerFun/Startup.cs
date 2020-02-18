@@ -27,8 +27,8 @@ namespace SwaggerFun
 
                     options.SchemaFilter<DictionarySchemaFilter>();
                     options.SchemaFilter<EnumSchemaFilter>();
-                    //options.SchemaFilter<FooSchemaFilter>();
                     options.SchemaFilter<KnownTypeSchemaFilter>();
+                    options.SchemaFilter<ObjectSchemaFilter>();
                     options.SchemaFilter<PrimitiveSchemaFilter>();
                     options.ParameterFilter<ParameterFilter>();
                     options.ParameterFilter<EnumParameterFilter>();
