@@ -43,15 +43,6 @@ namespace SwaggerFun
             {
                 operation.Extensions["x-costar-deprecated"] = new OpenApiString(obsoleteMessages.First());
             }
-
-            foreach (var response in operation.Responses)
-            {
-                foreach (var content in response.Value.Content)
-                {
-                    var returnType = context.MethodInfo.ReturnType.UnwrapIfTask();
-                    returnType.ApplyTypeModifierExtensions(content.Value);
-                }
-            }
         }
     }
 }

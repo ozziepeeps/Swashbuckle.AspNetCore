@@ -30,6 +30,7 @@ namespace SwaggerFun
                     options.ParameterFilter<ParameterFilter>();
                     options.ParameterFilter<EnumParameterFilter>();
                     options.OperationFilter<OperationFilter>();
+                    options.OperationFilter<OperationResponseSchemaFilter>();
 #pragma warning disable 0618
                     // TODO (2020-01-31): Figure out an alternative to this.
                     options.DescribeAllEnumsAsStrings();
