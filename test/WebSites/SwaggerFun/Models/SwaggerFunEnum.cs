@@ -2,6 +2,7 @@
 
 namespace SwaggerFun.Models
 {
+    [Flags]
     public enum SwaggerFunEnum : short
     {
         Unknown = 0,

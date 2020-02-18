@@ -28,7 +28,7 @@ namespace SwaggerFun
                 return;
             }
 
-            if (schema.Properties.Count == 0)
+            if (schema.Properties == null || schema.Properties.Count == 0)
             {
                 return;
             }
