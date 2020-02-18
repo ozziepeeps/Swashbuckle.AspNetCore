@@ -30,14 +30,20 @@ namespace SwaggerFun
             var valueType = dictionaryType.GetGenericArguments()[1];
             valueType.ApplyPrimitiveExtensions(schema.AdditionalProperties);
 
-            var dictionary = new OpenApiObject
-            {
-                ["type"] = new OpenApiString(keySchema.Type),
-            };
+            var dictionary = new OpenApiObject();
 
-            if (keySchema.Format != null)
+            if (keySchema.Reference != null)
             {
-                dictionary["format"] = new OpenApiString(keySchema.Format);
+                dictionary["$ref"] = new OpenApiString(keySchema.Reference.ReferenceV2);
+            }
+            else
+            {
+                dictionary["type"] = new OpenApiString(keySchema.Type);
+
+                if (keySchema.Format != null)
+                {
+                    dictionary["format"] = new OpenApiString(keySchema.Format);
+                }
             }
 
             foreach (var extension in keySchema.Extensions)

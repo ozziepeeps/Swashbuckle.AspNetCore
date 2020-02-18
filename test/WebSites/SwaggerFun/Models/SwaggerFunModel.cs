@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace SwaggerFun.Models
 {
+    /// <summary>
+    /// Represents a DTO that is fun to represent in Swagger.
+    /// </summary>
     public class SwaggerFunModel
     {
         /// <summary>
@@ -29,5 +32,10 @@ namespace SwaggerFun.Models
         /// Gets or sets the third map.
         /// </summary>
         public IDictionary<Guid, Attachment> Map3 { get; set; }
+
+        /// <summary>
+        /// Gets or sets the fourth map.
+        /// </summary>
+        public IDictionary<SwaggerFunEnum, Attachment> Map4 { get; set; }
     }
 }
