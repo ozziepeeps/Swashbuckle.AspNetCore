@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +45,12 @@ namespace SwaggerFun.Controllers
         [Obsolete("Use something else!")]
         public async Task GetSwaggerFunObsoleteAsync(CancellationToken cancellationToken)
         {
+        }
+
+        [HttpGet("dictionary")]
+        public async Task<IReadOnlyDictionary<int, string[][]>> GetDictionaryReturnTypeAsync(CancellationToken cancellationToken)
+        {
+            return new Dictionary<int, string[][]>();
         }
     }
 }

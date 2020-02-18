@@ -26,6 +26,7 @@ namespace SwaggerFun
                     options.UseFullTypeNameInSchemaIds();
 
                     options.SchemaFilter<SchemaFilter>();
+                    options.SchemaFilter<DictionarySchemaFilter>();
                     options.SchemaFilter<EnumSchemaFilter>();
                     options.ParameterFilter<ParameterFilter>();
                     options.ParameterFilter<EnumParameterFilter>();

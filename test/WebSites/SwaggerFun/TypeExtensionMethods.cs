@@ -172,5 +172,17 @@ namespace SwaggerFun
 
             return false;
         }
+
+        public static IEnumerable<Type> GetGenericTypes(this Type type)
+        {
+            var genericTypes = type.GetInterfaces().Where(t => t.IsGenericType).ToList();
+
+            if (type.IsGenericType)
+            {
+                genericTypes.Add(type);
+            }
+
+            return genericTypes;
+        }
     }
 }
