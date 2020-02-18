@@ -88,5 +88,16 @@ namespace SwaggerFun.Models
         /// Gets or sets the type collection.
         /// </summary>
         public IReadOnlyList<string> StringReadOnlyList { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type array.
+        /// </summary>
+        public string[][] StringJaggedArray { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type array.
+        /// </summary>
+        /// <remarks>TODO (2019-07-30): This is not correctly represented.</remarks>
+        public string[,] StringSquareArray { get; set; }
     }
 }
