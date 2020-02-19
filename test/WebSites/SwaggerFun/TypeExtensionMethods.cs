@@ -12,7 +12,7 @@ namespace SwaggerFun
     {
         public static void ApplyPrimitiveExtensions(this Type type, IOpenApiExtensible extensible)
         {
-            if (type == null)
+            if (type == null || extensible == null)
             {
                 return;
             }
