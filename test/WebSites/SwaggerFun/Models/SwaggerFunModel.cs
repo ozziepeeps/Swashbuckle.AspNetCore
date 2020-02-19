@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace SwaggerFun.Models
 {
@@ -99,5 +100,50 @@ namespace SwaggerFun.Models
         /// </summary>
         /// <remarks>TODO (2019-07-30): This is not correctly represented.</remarks>
         public string[,] StringSquareArray { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type collection.
+        /// </summary>
+        public IEnumerable<string[]> StringArrayEnumerable { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type collection.
+        /// </summary>
+        public IReadOnlyList<string[]> StringArrayReadOnlyList { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type collection.
+        /// </summary>
+        public KeyValuePair<string, int> KeyValuePair { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type collection.
+        /// </summary>
+        public KeyValuePair<string, IEnumerable<string>> NestedGenerics { get; set; }
+
+        /// <summary>
+        /// Gets or sets the IP address.
+        /// </summary>
+        /// <remarks>Represented in Swagger as a string with a special format.</remarks>
+        public IPAddress Address { get; set; }
+
+        /// <summary>
+        /// Gets or sets the URI.
+        /// </summary>
+        /// <remarks>Represented in Swagger as a string with a special format.</remarks>
+        public Uri Uri { get; set; }
+
+        /// <summary>
+        /// Gets or sets a type.
+        /// </summary>
+#pragma warning disable CS0618 // Type or member is obsolete
+        public ObsoleteType ObsoleteType { get; set; }
+#pragma warning restore CS0618 // Type or member is obsolete
+
+        /// <summary>
+        /// Gets or sets an obsolete property.
+        /// </summary>
+        [Obsolete("Obsolete property")]
+        public bool ObsoleteProperty { get; set; }
     }
 }
