@@ -4,7 +4,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace SwaggerFun
 {
-    public class EnumParameterFilter : IParameterFilter
+    internal class EnumParameterFilter : IParameterFilter
     {
         public void Apply(OpenApiParameter parameter, ParameterFilterContext context)
         {

@@ -3,7 +3,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace SwaggerFun
 {
-    public class PrimitiveSchemaFilter : ISchemaFilter
+    internal class PrimitiveSchemaFilter : ISchemaFilter
     {
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {

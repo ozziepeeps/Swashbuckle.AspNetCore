@@ -6,7 +6,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace SwaggerFun
 {
-    public class DictionarySchemaFilter : ISchemaFilter
+    internal class DictionarySchemaFilter : ISchemaFilter
     {
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {

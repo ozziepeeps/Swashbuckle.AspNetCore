@@ -12,7 +12,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace SwaggerFun
 {
-    public class ObjectSchemaFilter : ISchemaFilter
+    internal class ObjectSchemaFilter : ISchemaFilter
     {
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {

@@ -4,7 +4,7 @@ using System.Net.Sockets;
 
 namespace SwaggerFun
 {
-    public static class KnownTypes
+    internal static class KnownTypes
     {
         public static readonly Type[] Types = new[]
         {
