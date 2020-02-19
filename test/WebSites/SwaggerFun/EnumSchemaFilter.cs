@@ -11,14 +11,14 @@ namespace SwaggerFun
     {
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {
-            if (!context.Type.IsEnum)
+            var type = context.Type;
+
+            if (!type.IsEnum)
             {
                 return;
             }
 
-            var type = context.Type;
-
-            var underlyingType = context.Type.GetEnumUnderlyingType();
+            var underlyingType = type.GetEnumUnderlyingType();
             var enumSchema = context.SchemaGenerator.GenerateSchema(underlyingType, context.SchemaRepository);
 
             underlyingType.ApplyPrimitiveExtensions(enumSchema);
