@@ -228,6 +228,7 @@ namespace SwaggerFun
                 schema.Type = "string";
                 schema.Format = "stream";
                 schema.Properties?.Clear();
+                schema.AllOf = new List<OpenApiSchema>();   // Cannot .Clear() the collection as it's read only.
             }
             else if (type.IsEnum)
             {

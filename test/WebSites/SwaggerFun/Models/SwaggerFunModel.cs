@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace SwaggerFun.Models
 {
@@ -172,5 +174,71 @@ namespace SwaggerFun.Models
         [DataMember]
         [Obsolete("Obsolete property")]
         public bool ObsoleteProperty { get; set; }
+
+        /// <summary>
+        /// Gets or sets a property annotated with Newtonsoft's attribute.
+        /// </summary>
+        [JsonProperty]
+        public bool JsonProperty { get; set; }
+
+        /// <summary>
+        /// Gets or sets a property which is ignored.
+        /// </summary>
+        [IgnoreDataMember]
+        public bool Ignored { get; set; }
+
+        /// <summary>
+        /// Gets or sets an aliased property.
+        /// </summary>
+        [DataMember(Name = "alias1")]
+        public int DataMemberWithAlias { get; set; }
+
+        /// <summary>
+        /// Gets or sets an aliased property.
+        /// </summary>
+        [JsonProperty("alias2")]
+        public int JsonPropertyWithAlias { get; set; }
+
+        /// <summary>
+        /// Gets or sets a property which has default value serialization disabled.
+        /// </summary>
+        [DataMember(EmitDefaultValue = false)]
+        public int DataMemberSerializeDefaultDisabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets a property which has default value serialization disabled.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public int JsonPropertySerializeDefaultDisabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets a property which has default value serialization disabled.
+        /// </summary>
+        [DataMember(Name = "serializeDefaultDisabled1", EmitDefaultValue = false)]
+        public int DataMemberSerializeDefaultDisabledWithAlias { get; set; }
+
+        /// <summary>
+        /// Gets or sets a property which has default value serialization disabled.
+        /// </summary>
+        [JsonProperty("serializeDefaultDisabled2", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public int JsonPropertySerializeDefaultDisabledWithAlias { get; set; }
+
+        /// <summary>
+        /// Gets or sets the bytes.
+        /// </summary>
+        [DataMember(Name = "byte", EmitDefaultValue = false)]
+        public byte Byte { get; set; }
+
+        /// <summary>
+        /// Gets or sets the file bytes array.
+        /// </summary>
+        [DataMember(Name = "fileBytes", EmitDefaultValue = false)]
+        public byte[] FileBytes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the file stream.
+        /// </summary>
+        [DataMember(Name = "fileStream", EmitDefaultValue = false)]
+        public Stream FileStream { get; set; }
     }
 }
