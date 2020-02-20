@@ -1,6 +1,6 @@
 ﻿using System;
-using System.CodeDom.Compiler;
 using System.Linq;
+using System.Reflection;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
@@ -12,10 +12,18 @@ namespace SwaggerFun
     {
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
-            var controllerActionDescriptor = context.ApiDescription.ActionDescriptor as ControllerActionDescriptor;
+            if (!(context.ApiDescription.ActionDescriptor is ControllerActionDescriptor controllerActionDescriptor))
+            {
+                return;
+            }
 
+            ApplyOperationExtensions(operation, context, controllerActionDescriptor);
+        }
+
+        private static void ApplyOperationExtensions(OpenApiOperation operation, OperationFilterContext context, ControllerActionDescriptor controllerActionDescriptor)
+        {
             var generatedCodeAttribute = controllerActionDescriptor.ControllerTypeInfo?
-                .GetCustomAttributes(true).OfType<GeneratedCodeAttribute>()?
+                .GetCustomAttributes<System.CodeDom.Compiler.GeneratedCodeAttribute>()?
                 .FirstOrDefault(a => a.Tool == "costar.swagger.DomainId/costar.swagger.OperationId");
 
             if (generatedCodeAttribute != null)
