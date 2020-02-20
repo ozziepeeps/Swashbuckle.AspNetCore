@@ -205,7 +205,7 @@ namespace SwaggerFun
                 schema.Reference = null;
                 schema.Type = "string";
                 schema.Format = "duration";
-                schema.AllOf = new List<OpenApiSchema>();   // Cannot .Clear() the collection as it's read only.
+                schema.AllOf = null;
             }
             else if (type == typeof(DateTimeOffset))
             {
@@ -216,7 +216,7 @@ namespace SwaggerFun
                 schema.Reference = null;
                 schema.Type = "string";
                 schema.Format = "ip-address";
-                schema.AllOf = new List<OpenApiSchema>();   // Cannot .Clear() the collection as it's read only.
+                schema.AllOf = null;
             }
             else if (type == typeof(char))
             {
@@ -228,7 +228,7 @@ namespace SwaggerFun
                 schema.Type = "string";
                 schema.Format = "stream";
                 schema.Properties?.Clear();
-                schema.AllOf = new List<OpenApiSchema>();   // Cannot .Clear() the collection as it's read only.
+                schema.AllOf = null;
             }
             else if (type.IsEnum)
             {
