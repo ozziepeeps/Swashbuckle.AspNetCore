@@ -8,7 +8,7 @@ namespace SwaggerFun
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {
             var type = context.Type;
-            type.ApplyPrimitiveExtensions(schema);
+            type.ApplyPrimitiveExtensions(schema.Extensions);
         }
     }
 }

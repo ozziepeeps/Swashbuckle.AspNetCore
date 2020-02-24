@@ -6,7 +6,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace SwaggerFun
 {
-    internal class KnownTypeSchemaFilter : ISchemaFilter
+    internal class RemoveKnownTypeSchemaFilter : ISchemaFilter
     {
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {
@@ -14,7 +14,8 @@ namespace SwaggerFun
 
             if (KnownTypes.Types.Contains(type))
             {
-                schema.Extensions["x-costar-remove"] = new OpenApiBoolean(true);
+                // Just annotate for now. The schemas are actually removed from the document by the DocumentFilter.
+                schema.Extensions.Add(DocumentFilter.Remove, new OpenApiBoolean(true));
             }
         }
     }

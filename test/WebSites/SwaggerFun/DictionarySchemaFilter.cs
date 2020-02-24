@@ -25,10 +25,9 @@ namespace SwaggerFun
             var keyType = dictionaryType.GetGenericArguments()[0];
             var keySchema = context.SchemaGenerator.GenerateSchema(keyType, context.SchemaRepository);
 
-            keyType.ApplyPrimitiveExtensions(keySchema);
-
             var valueType = dictionaryType.GetGenericArguments()[1];
-            valueType.ApplyPrimitiveExtensions(schema.AdditionalProperties);
+            valueType.ApplyPrimitiveExtensions(schema.AdditionalProperties?.Extensions);
+            valueType.ApplyEnumExtensions(schema.AdditionalProperties?.Extensions, context.SchemaGenerator, context.SchemaRepository);
 
             var dictionary = new OpenApiObject();
 
@@ -51,7 +50,7 @@ namespace SwaggerFun
                 dictionary[extension.Key] = (IOpenApiAny)extension.Value;
             }
 
-            schema.Extensions["x-costar-keyschema"] = dictionary;
+            schema.Extensions[VendorExtensions.KeySchema] = dictionary;
 
             if (schema != null)
             {

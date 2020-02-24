@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 
@@ -8,8 +9,9 @@ namespace SwaggerFun
     {
         public static readonly Type[] Types = new[]
         {
-            typeof(IPAddress),
             typeof(AddressFamily),
+            typeof(IPAddress),
+            typeof(Stream),
             typeof(TimeSpan),
         };
     }

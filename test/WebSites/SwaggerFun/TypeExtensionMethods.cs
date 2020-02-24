@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.OpenApi.Any;
@@ -10,9 +9,9 @@ namespace SwaggerFun
 {
     internal static class TypeExtensionMethods
     {
-        public static void ApplyPrimitiveExtensions(this Type type, IOpenApiExtensible extensible)
+        public static void ApplyPrimitiveExtensions(this Type type, IDictionary<string, IOpenApiExtension> extensions)
         {
-            if (type == null || extensible == null)
+            if (type == null || extensions == null)
             {
                 return;
             }
@@ -23,7 +22,7 @@ namespace SwaggerFun
             if (type.IsNullable(out var nullableTypeArgument))
             {
                 type = nullableTypeArgument;
-                extensible.Extensions["x-costar-nullable"] = new OpenApiBoolean(true);
+                extensions[VendorExtensions.Nullable] = new OpenApiBoolean(true);
             }
 
             type = type.UnwrapIfArray().UnwrapIfNullable();
@@ -76,51 +75,13 @@ namespace SwaggerFun
 
             if (byteSize != null)
             {
-                extensible.Extensions["x-costar-bytesize"] = new OpenApiInteger(byteSize.Value);
+                extensions[VendorExtensions.ByteSize] = new OpenApiInteger(byteSize.Value);
             }
 
             if (unsigned)
             {
-                extensible.Extensions["x-costar-unsigned"] = new OpenApiBoolean(true);
+                extensions[VendorExtensions.Unsigned] = new OpenApiBoolean(true);
             }
-        }
-
-        public static IEnumerable<EnumMember> GetEnumMembers(this Type type)
-        {
-            if (type == null || !type.IsEnum)
-            {
-                return Enumerable.Empty<EnumMember>();
-            }
-
-            var names = type.GetEnumNames();
-
-            var list = new List<EnumMember>();
-
-            foreach (var name in names)
-            {
-                var value = Convert.ChangeType(Enum.Parse(type, name), type.GetEnumUnderlyingType(), CultureInfo.InvariantCulture);
-
-                var field = type.GetField(name);
-                var attributes = (ObsoleteAttribute[])field.GetCustomAttributes(typeof(ObsoleteAttribute), false);
-
-                bool isObsolete;
-                string obsoleteMessage;
-
-                if (attributes != null && attributes.Any())
-                {
-                    isObsolete = true;
-                    obsoleteMessage = attributes.First().Message;
-                }
-                else
-                {
-                    isObsolete = false;
-                    obsoleteMessage = null;
-                }
-
-                list.Add(new EnumMember(name, value, isObsolete, obsoleteMessage));
-            }
-
-            return list;
         }
 
         public static Type UnwrapIfNullable(this Type type)
@@ -138,16 +99,6 @@ namespace SwaggerFun
             if (type.IsArray)
             {
                 return type.GetElementType();
-            }
-
-            return type;
-        }
-
-        public static Type UnwrapIfTask(this Type type)
-        {
-            if (type.IsTask(out var taskTypeArgument))
-            {
-                return taskTypeArgument;
             }
 
             return type;

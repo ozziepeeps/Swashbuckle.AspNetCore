@@ -40,13 +40,15 @@ namespace SwaggerFun
 
                     options.SchemaFilter<DictionarySchemaFilter>();
                     options.SchemaFilter<EnumSchemaFilter>();
-                    options.SchemaFilter<KnownTypeSchemaFilter>();
+                    options.SchemaFilter<RemoveKnownTypeSchemaFilter>();
                     options.SchemaFilter<ObjectSchemaFilter>();
                     options.SchemaFilter<PrimitiveSchemaFilter>();
                     options.ParameterFilter<ParameterFilter>();
                     options.ParameterFilter<EnumParameterFilter>();
                     options.OperationFilter<OperationFilter>();
                     options.OperationFilter<OperationResponseSchemaFilter>();
+                    options.DocumentFilter<DocumentFilter>();
+
 #pragma warning disable 0618
                     // TODO (2020-01-31): Figure out an alternative to this.
                     options.DescribeAllEnumsAsStrings();

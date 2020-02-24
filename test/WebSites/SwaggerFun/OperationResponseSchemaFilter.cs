@@ -11,8 +11,8 @@ namespace SwaggerFun
             {
                 foreach (var content in response.Value.Content)
                 {
-                    var returnType = context.MethodInfo.ReturnType.UnwrapIfTask();
-                    returnType.ApplyPrimitiveExtensions(content.Value.Schema);
+                    //var returnType = context.MethodInfo.ReturnType.UnwrapIfTask();
+                    //returnType.ApplyPrimitiveExtensions(content.Value.Schema);
                 }
             }
         }

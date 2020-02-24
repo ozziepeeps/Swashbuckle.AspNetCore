@@ -162,7 +162,7 @@ namespace SwaggerFun
 
                 if (emitDefaultLookupByAlias.Contains(key))
                 {
-                    property.Value.Extensions["x-costar-serializedefault"] = new OpenApiBoolean(true);
+                    property.Value.Extensions[VendorExtensions.SerializedDefault] = new OpenApiBoolean(true);
                 }
 
                 if (propertyLookupByAlias.ContainsKey(key))
@@ -171,17 +171,17 @@ namespace SwaggerFun
 
                     if (!propertyInfo.Name.Equals(key, StringComparison.OrdinalIgnoreCase))
                     {
-                        property.Value.Extensions["x-costar-propertyname"] = new OpenApiString(propertyInfo.Name);
+                        property.Value.Extensions[VendorExtensions.PropertyName] = new OpenApiString(propertyInfo.Name);
                     }
 
-                    propertyInfo.PropertyType.ApplyPrimitiveExtensions(property.Value);
+                    propertyInfo.PropertyType.ApplyPrimitiveExtensions(property.Value.Extensions);
 
                     Transform(property.Value, propertyInfo.PropertyType);
                 }
 
                 if (obsoleteLookupByAlias.ContainsKey(key))
                 {
-                    property.Value.Extensions["x-costar-deprecated"] = new OpenApiString(obsoleteLookupByAlias[key]);
+                    property.Value.Extensions[VendorExtensions.Deprecated] = new OpenApiString(obsoleteLookupByAlias[key]);
                 }
             }
 
@@ -189,7 +189,7 @@ namespace SwaggerFun
 
             if (typeObsoleteAttribute != null)
             {
-                schema.Extensions["x-costar-deprecated"] = new OpenApiString(typeObsoleteAttribute.Message);
+                schema.Extensions[VendorExtensions.Deprecated] = new OpenApiString(typeObsoleteAttribute.Message);
             }
         }
 
