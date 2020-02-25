@@ -53,7 +53,6 @@ namespace SwaggerFun
                     // TODO (2020-01-31): Figure out an alternative to this.
                     options.DescribeAllEnumsAsStrings();
 #pragma warning restore 0618
-                    options.DocumentFilter<RemoveKnownTypeDocumentFilter>();
                 })
                 .AddControllers();
         }
